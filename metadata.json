@@ -1,0 +1,6 @@
+{
+  "name": "Visagismo IA - Análisis Facial & Colorimetría",
+  "description": "Clasificación de tipo de rostro, tono de piel y cabello con recomendaciones personalizadas de cortes y colores que potencian tu luz natural.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
