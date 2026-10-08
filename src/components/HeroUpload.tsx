@@ -370,14 +370,14 @@ export const HeroUpload: React.FC<HeroUploadProps> = ({
           <div className="bg-neutral-900/70 border border-neutral-800/80 rounded-3xl p-6 backdrop-blur-xl space-y-4">
             <div className="flex items-center justify-between">
               <h3 className="font-serif-luxury text-base font-bold text-neutral-100 flex items-center gap-2">
-                <User className="w-4 h-4 text-amber-400" />
-                <span>¿Sin foto a mano? Prueba un modelo</span>
+                <span className="text-base">🇦🇷</span>
+                <span>Artistas y Modelos Argentinos</span>
               </h3>
-              <span className="text-[11px] text-amber-400/90 font-medium">1 clic</span>
+              <span className="text-[11px] px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/20 font-medium">1 clic</span>
             </div>
 
             <p className="text-xs text-neutral-400">
-              Selecciona una modelo con rasgos diversos para probar el diagnóstico instantáneamente:
+              Prueba el diagnóstico morfológico con figuras y modelos argentinas de diversas tipologías faciales:
             </p>
 
             <div className="grid grid-cols-2 gap-3">
