@@ -111,6 +111,7 @@ export default function App() {
   ) => {
     setIsLoading(true);
     setError(null);
+    setStagedImage(base64Image);
 
     // Simulated progressive status steps for delightful UX
     const steps = [

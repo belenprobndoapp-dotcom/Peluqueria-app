@@ -98,6 +98,7 @@ export const HeroUpload: React.FC<HeroUploadProps> = ({
   };
 
   const handleSelectSample = (sample: SampleModel) => {
+    setSelectedImage(sample.imageUrl);
     fetchImageAsBase64(sample.imageUrl);
   };
 
@@ -112,14 +113,32 @@ export const HeroUpload: React.FC<HeroUploadProps> = ({
       };
       reader.readAsDataURL(blob);
     } catch (err) {
-      console.error('Error fetching sample image:', err);
+      console.warn('Fallback loading image directly as preview:', err);
       setSelectedImage(url);
     }
   };
 
-  const handleSubmitAnalysis = () => {
+  const handleSubmitAnalysis = async () => {
     if (!selectedImage || isLoading) return;
-    onImageSelected(selectedImage, genderPref, lengthPref, userNotes);
+
+    let finalImage = selectedImage;
+    // Ensure image is converted to clean base64 data URI before submitting
+    if (!finalImage.startsWith('data:image/')) {
+      try {
+        const response = await fetch(finalImage);
+        const blob = await response.blob();
+        const base64Data = await new Promise<string>((resolve) => {
+          const reader = new FileReader();
+          reader.onloadend = () => resolve(reader.result as string);
+          reader.readAsDataURL(blob);
+        });
+        finalImage = await compressImage(base64Data);
+      } catch (err) {
+        console.warn('Sending existing image reference:', err);
+      }
+    }
+
+    onImageSelected(finalImage, genderPref, lengthPref, userNotes);
   };
 
   return (
