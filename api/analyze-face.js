@@ -17,7 +17,7 @@ export default async function handler(req, res) {
     const { image, prompt } = req.body || {};
 
     const response = await ai.models.generateContent({
-      model: 'gemini-3.8-flash',
+      model: 'gemini-1.5-flash',
       contents: [
         prompt || 'Analiza el tipo de rostro, tono de piel y subtono de cabello.',
         image
